@@ -1,0 +1,42 @@
+<h1>
+  <%= link_to 'New Expense', new_expense_path, class: 'btn btn-primary' %>
+  Expenses
+  <small>list of all tracked expense</small>
+</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Weight</th>
+    <th>Name</th>
+    <th>Active?</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @expenses.each do |expense| %>
+      <tr>
+        <td>
+          <%= expense.weight %>
+        </td>
+        <td>
+          <%= link_to expense.name, expense_path(expense) %>
+        </td>
+        <td>
+          <%= expense.is_active? ? 'yes' : 'no' %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_expense_path(expense), class: 'btn btn-primary btn-mini' %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+  <thead>
+  <tr>
+    <th>Weight</th>
+    <th>Name</th>
+    <th>Active?</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+</table>
