@@ -19,7 +19,7 @@
   <% @expenses.each do |expense| %>
       <tr>
         <td>
-          <%= link_to expense.name, expense_path(expense) %>
+          <%= expense.name %>
         </td>
         <td>
           <%= expense.weight %>

@@ -12,7 +12,7 @@ class MonthsController < ApplicationController
   end
 
   def create
-    @month = Month.new(params[:month])
+    @month = Month.new(month_params)
 
     if @month.save
       redirect_to months_path
@@ -27,15 +27,23 @@ class MonthsController < ApplicationController
 
   def update
     @month = Month.find(params[:id])
-    if @month.update_attributes(params[:month])
+    if @month.update_attributes(month_param)
       @month.month_expenses.each do |me|
         me.calculate_sum_real
         me.save
       end
 
-      redirect_to month_path(@month)
+      redirect_to months_path
     else
-      render :edit
+      redirect_to months_path
     end
+  end
+
+  def month_params
+    params.require(:months).permit(:name, :result)
+  end
+
+  def month_param
+    params.require(:month).permit(:name, :result)
   end
 end
