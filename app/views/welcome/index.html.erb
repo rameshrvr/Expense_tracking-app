@@ -1,10 +1,5 @@
 <!-- Body of the page -->
 <body>
-
-    <% Expense.active.ordered.all.each do |expense| %>
-      <h2><%= link_to expense.name, expense_path(expense) %></h2>
-      <div id="visualization_<%= expense.id %>" style="width: 940px; height: 550px;"></div>
-    <% end %>
     <!-- Page Content -->
     <div class="content-section-a">
 
@@ -83,7 +78,7 @@
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a href="https://mail.google.com/mail/u/0/#inbox" class="btn btn-default btn-lg" target='new_tab'><i class="fa fa-gmail fa-fw"></i> <span class="network-name">Gmail</span></a>
+                                <a href="https://mail.google.com/mail/u/0/#inbox" class="btn btn-default btn-lg" target='new_tab'><i class="fa fa-gmail fa-fw"></i> <span class="network-name">Email</span></a>
                             </li>
                             <li>
                                 <a href="https://www.facebook.com/rameshrv75" class="btn btn-default btn-lg" target='new_tab1'><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>

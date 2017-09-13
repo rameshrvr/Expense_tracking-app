@@ -1,3 +1,9 @@
-<h1>Edit Expense <small>update content</small></h1>
+<h1>Update the expense</h1>
 
-<%= render 'form' %>
+<%= form_for @expense, :url =>{:action => "update", :id => @expense} do |expense|%>
+<p>Expense Name: <%= expense.text_field 'name' %></p>
+<p>Expense Amount: <%= expense.text_field 'weight' %></p>
+<%= expense.submit "Save changes" %>
+<% end -%>
+<br>
+<%= link_to 'Back', expenses_path %>

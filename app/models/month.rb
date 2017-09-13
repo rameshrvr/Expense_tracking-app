@@ -6,8 +6,6 @@ class Month < ApplicationRecord
 
   validates_presence_of :name
 
-  attr_accessor :name, :result, :month_expenses_attributes
-
   accepts_nested_attributes_for :month_expenses
 
   scope :ordered, -> { order('id DESC') }

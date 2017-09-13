@@ -3,34 +3,34 @@ class ExpensesController < ApplicationController
     @expenses = Expense.ordered
   end
 
-  def show
-    @expense = Expense.ordered.includes(:months).find(params[:id])
-  end
-
   def new
     @expense = Expense.new
   end
 
   def create
-    @expense = Expense.new(params[:expense])
+    @expense = Expense.new(expense_params)
 
     if @expense.save
       redirect_to expenses_path
     else
-      render :edit
+      redirect_to expenses_path
     end
-  end
-
-  def edit
-    @expense = Expense.find(params[:id])
   end
 
   def update
     @expense = Expense.find(params[:id])
-    if @expense.update_attributes(params[:expense])
-      redirect_to expense_path(@expense)
+    if @expense.update_attributes(expense_param)
+      redirect_to expenses_path
     else
-      render :edit
+      redirect_to edit_expense_path
     end
+  end
+
+  def expense_params
+    params.require(:expenses).permit(:name, :weight)
+  end
+
+  def expense_param
+    params.require(:expense).permit(:name, :weight)
   end
 end

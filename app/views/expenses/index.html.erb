@@ -1,14 +1,16 @@
 <h1>
-  <%= link_to 'New Expense', new_expense_path, class: 'btn btn-primary' %>
-  Expenses
-  <small>list of all tracked expense</small>
+  <%= link_to 'Add New Expense', new_expense_path, class: 'btn btn-primary' %>
+  <b>Expense</b>
 </h1>
-
-<table class="table">
+<% if @expenses.blank? %>
+  <h1><small>Currently there are no records</small></h1>
+<% else %>
+  <h1><small>  list of all tracked expenses</small></h1>
+  <table class="table">
   <thead>
   <tr>
-    <th>Weight</th>
-    <th>Name</th>
+    <th>Expense Name</th>
+    <th>Amount</th>
     <th>Active?</th>
     <th>Actions</th>
   </tr>
@@ -17,10 +19,10 @@
   <% @expenses.each do |expense| %>
       <tr>
         <td>
-          <%= expense.weight %>
+          <%= link_to expense.name, expense_path(expense) %>
         </td>
         <td>
-          <%= link_to expense.name, expense_path(expense) %>
+          <%= expense.weight %>
         </td>
         <td>
           <%= expense.is_active? ? 'yes' : 'no' %>
@@ -31,12 +33,5 @@
       </tr>
   <% end %>
   </tbody>
-  <thead>
-  <tr>
-    <th>Weight</th>
-    <th>Name</th>
-    <th>Active?</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
 </table>
+<% end %>
