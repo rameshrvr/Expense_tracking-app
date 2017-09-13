@@ -5,7 +5,7 @@ class Expense < ApplicationRecord
   validates_presence_of :name, :weight
   validates_uniqueness_of :name
 
-  # attr_accessible :name, :weight, :is_active
+  attr_accessor :name, :weight, :is_active
 
   scope :ordered, ->() { order('weight DESC') }
   scope :active, ->() { where(is_active: true) }
