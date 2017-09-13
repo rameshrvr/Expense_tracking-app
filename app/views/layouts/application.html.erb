@@ -12,6 +12,38 @@
   		<%= javascript_include_tag "application", 'data-turbolinks-track': 'reload' %>
   		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
 
+  		<!-- Application code -->
+  		<script type="text/javascript">
+  			<% Expense.active.ordered.each do |expense| %>
+      		function drawVisualization<%= expense.id %>() {
+        		// Create and populate the data table.
+        		var data = google.visualization.arrayToDataTable([
+          		['x', '<%= Time.now.year.to_s %>', '<%= (Time.now - 1.years).year.to_s %>', '<%= (Time.now - 2.years).year.to_s %>', '<%= (Time.now - 3.years).year.to_s %>', '<%= (Time.now - 4.years).year.to_s %>'],
+          		<% Month.limit(12).order('id DESC').reverse.each do |month| %>
+            		['<%= month.name.gsub(/\d+/, '') %>',
+              	<%= MonthExpense.where(month_id: month.id, expense_id: expense.id).first.try(:sum_real) || 0 %>,
+              	<%= MonthExpense.where(month_id: month.id-12, expense_id: expense.id).first.try(:sum_real) || 0 %>,
+              	<%= MonthExpense.where(month_id: month.id-24, expense_id: expense.id).first.try(:sum_real) || 0 %>,
+              	<%= MonthExpense.where(month_id: month.id-36, expense_id: expense.id).first.try(:sum_real) || 0 %>,
+              	<%= MonthExpense.where(month_id: month.id-48, expense_id: expense.id).first.try(:sum_real) || 0 %>
+            	],
+          		<% end %>
+        		]);
+
+        	// Create and draw the visualization.
+        	new google.visualization.LineChart(document.getElementById('visualization_<%= expense.id %>')).
+          		draw(data, {curveType: "none",
+            	width: 940, height: 500,
+            	vAxis: {maxValue: 10},
+            	chartArea:{left:50,top:30,width:880,height:400},
+            	legend: {position: 'top', textStyle: {color: 'blue', fontSize: 16}}
+          					}
+        			);
+      			}
+      		google.setOnLoadCallback(drawVisualization<%= expense.id %>);
+  			<% end %>
+  		</script>
+
 	</head>
 	<body>
   		<%= render 'shared/header' %>

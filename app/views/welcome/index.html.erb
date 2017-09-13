@@ -1,5 +1,10 @@
 <!-- Body of the page -->
 <body>
+
+    <% Expense.active.ordered.all.each do |expense| %>
+      <h2><%= link_to expense.name, expense_path(expense) %></h2>
+      <div id="visualization_<%= expense.id %>" style="width: 940px; height: 550px;"></div>
+    <% end %>
     <!-- Page Content -->
     <div class="content-section-a">
 
