@@ -3,6 +3,7 @@
 <%= form_for @expense, :url =>{:action => "update", :id => @expense} do |expense|%>
 <p>Expense Name: <%= expense.text_field 'name' %></p>
 <p>Expense Amount: <%= expense.text_field 'weight' %></p>
+<p>Month: <%= expense.text_field 'month' %></p>
 <%= expense.submit "Save changes" %>
 <% end -%>
 <br>

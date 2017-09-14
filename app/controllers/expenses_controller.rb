@@ -31,10 +31,10 @@ class ExpensesController < ApplicationController
   end
 
   def expense_params
-    params.require(:expenses).permit(:name, :weight)
+    params.require(:expenses).permit(:name, :weight, :month)
   end
 
   def expense_param
-    params.require(:expense).permit(:name, :weight)
+    params.require(:expense).permit(:name, :weight, :month)
   end
 end

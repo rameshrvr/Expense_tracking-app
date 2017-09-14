@@ -11,6 +11,7 @@
   <tr>
     <th>Expense Name</th>
     <th>Amount</th>
+    <th>Month</th>
     <th>Active?</th>
     <th>Actions</th>
   </tr>
@@ -23,6 +24,9 @@
         </td>
         <td>
           <%= expense.weight %>
+        </td>
+        <td>
+          <%= expense.month %>
         </td>
         <td>
           <%= expense.is_active? ? 'yes' : 'no' %>
