@@ -22,6 +22,7 @@ username: #{your mysql username}
 password: #{your mysql password}
 ```
 	If not please change the `config\database.yml` as given below
+	Replace `gem 'mysql2', '>= 0.3.18', '< 0.5'` with `gem 'sqlite3'` in your Gemfile
 	(These commads will create a local db inside your directory)
 ```
 default: &default
