@@ -15,15 +15,15 @@ git clone https://github.com/rameshrvr/Expense_tracking-app.git
 $ bundle install
 ```
 Configuration:
-	* Make sure you have MySql server installed in your local machine.
-	If you are using mysql please change the credentials in database.yml
+* Make sure you have MySql server installed in your local machine.
+If you are using mysql please change the credentials in database.yml
 ```
 username: #{your mysql username}
 password: #{your mysql password}
 ```
-	* If not please change the `config\database.yml` as given below
-	Replace `gem 'mysql2', '>= 0.3.18', '< 0.5'` with `gem 'sqlite3'` in your Gemfile
-	(These commads will create a local db inside your directory)
+* If not please change the `config\database.yml` as given below
+Replace `gem 'mysql2', '>= 0.3.18', '< 0.5'` with `gem 'sqlite3'` in your Gemfile
+(These commads will create a local db inside your directory)
 ```
 default: &default
   adapter: sqlite3
@@ -40,16 +40,16 @@ test:
 ```
 
 Database creation:
-	* Those db commands will help in creating and migrating database related stuffs.
+* Those db commands will help in creating and migrating database related stuffs.
 ```
 $ rake db:create db:migrate
 ```
 
 How to run the test suite:
-	* Currently there are no tests has been written yet. will be doing that soon.
+* Currently there are no tests has been written yet. will be doing that soon.
 
 How to start the application:
-	* Using the below command you can start your local server
+* Using the below command you can start your local server
 ```
 $ rails s
 ```
