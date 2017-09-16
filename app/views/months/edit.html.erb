@@ -2,7 +2,7 @@
 
 <%= form_for @month, :url =>{:action => "update", :id => @month} do |month|%>
 <p>Month Name: <%= month.text_field 'name' %></p>
-<p>Result: <%= month.text_area 'result' %></p>
+<p>Description: <%= month.text_area 'result' %></p>
 <%= month.submit "Save changes" %>
 <% end -%>
 <br>

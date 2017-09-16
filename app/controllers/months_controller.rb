@@ -1,6 +1,12 @@
 class MonthsController < ApplicationController
   def index
     @months = Month.ordered
+    @active_months, @disp_months = [], {}
+    Expense.ordered.map { |expense| @active_months << expense.month.upcase }
+    @active_months.uniq!
+    @active_months.each do |month|
+      @disp_months[month] = Expense.where(month: month).sum(:weight)
+    end
   end
 
   def show
@@ -32,7 +38,6 @@ class MonthsController < ApplicationController
         me.calculate_sum_real
         me.save
       end
-
       redirect_to months_path
     else
       redirect_to months_path

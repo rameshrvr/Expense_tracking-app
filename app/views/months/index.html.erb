@@ -9,9 +9,9 @@
   <table class="table">
   <thead>
   <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Real expenses sum</th>
+    <th></th>
+    <th>Month Name</th>
+    <th>Description</th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -19,13 +19,12 @@
   <% @months.each do |month| %>
       <tr>
         <td>
-          <%= month.id %>
         </td>
         <td>
-          <%= link_to month.name, month_path(month) %>
+          <%= month.name %>
         </td>
         <td>
-          <%= month.month_expenses.sum('month_expenses.sum_real') %>
+          <%= month.result %>
         </td>
         <td>
           <%= link_to 'Edit', edit_month_path(month), class: 'btn btn-primary btn-mini' %>
@@ -33,5 +32,26 @@
       </tr>
   <% end %>
   </tbody>
+  </table>
+  <!-- Get distinct months from database -->
+  <table class='table'>
+    <thead>
+      <tr>
+      <th></th>
+        <th>Active Months</th>
+        <th>Sum of all expenses</th>
+      </tr>
+    </thead>
+    <% @disp_months.each do |key, value| %>
+      <tr>
+      <td></td>
+        <td>
+          <%= key %>
+        </td>
+        <td>
+          <%= value %>
+        </td>
+      </tr>
+    <% end %>
   </table>
 <% end %>
