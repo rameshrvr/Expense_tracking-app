@@ -20,17 +20,14 @@ RSpec.describe Expense, :type => :model do
   end
 
   it "Verify the name in expense table" do
-    expect(expense.name.eql? 'Test')
+    expect(expense.name).to eq('Test')
   end
 
   it "Verify the amount in expense table" do
-  	expect(expense.weight.eql? '2500')
+  	expect(expense.weight.to_s).to eq('2500')
   end
 
   it "Verify the month in expense table" do
-  	expect(expense.month.eql? 'Apr')
+  	expect(expense.month).to eq('Apr')
   end
-  it "is not valid without a description"
-  it "is not valid without a start_date"
-  it "is not valid without a end_date"
 end

@@ -46,7 +46,11 @@ $ rake db:create db:migrate
 ```
 
 How to run the test suite:
-* Currently there are no tests has been written yet. will be doing that soon.
+* cd into your application directory and run schema migrate for test environment then run rspec.
+```
+$ rake db:create db:migrate RAILS_ENV=test
+$ rspec
+```
 
 How to start the application:
 * Using the below command you can start your local server
